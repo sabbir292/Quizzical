@@ -1,5 +1,22 @@
+import React from "react";
+import Quizical from "./Quizical";
+import QuizicalQuestions from "./QuizicalQuestions";
+
+    
 export default function App(){
-    return(
-        <h1>Hello Quizical</h1>
-    )
-}
+    const [isQuizStarted, setIsQuizStarted] = React.useState(false)
+   
+    function startQuiz(){
+        setIsQuizStarted(!isQuizStarted)
+    }  
+        return (
+            <div>
+                {isQuizStarted === false && <Quizical
+                    isQuizStarted= {isQuizStarted}
+                    handleClick = {startQuiz}
+                />}
+                {isQuizStarted && <QuizicalQuestions/>}
+            </div>
+            )
+        }
+       
