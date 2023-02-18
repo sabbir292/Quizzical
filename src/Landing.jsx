@@ -1,6 +1,6 @@
 import './index.css'
 
-export default function Quizical(props){
+export default function Landing(props){
            return (
                  <main className='main-container-landing'>
                      <section className='landing-page'>

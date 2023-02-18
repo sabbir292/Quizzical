@@ -95,6 +95,9 @@ body{
     margin: 15px;
     margin-left: 0;
 }
+.ansBtn.selected{
+    background-color: aquamarine;
+}
 .line{
     width: 460px;
     height: 0px;

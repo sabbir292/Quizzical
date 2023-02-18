@@ -1,22 +1,25 @@
 import React from "react";
-import Quizical from "./Quizical";
-import QuizicalQuestions from "./QuizicalQuestions";
+import Quiz from "./Quiz";
+import Landing from "./Landing";
 
-    
 export default function App(){
-    const [isQuizStarted, setIsQuizStarted] = React.useState(false)
+    const [quizStarted, setquizStarted] = React.useState(false)
+
+    function startQuiz(){setquizStarted(!quizStarted)} 
    
-    function startQuiz(){
-        setIsQuizStarted(!isQuizStarted)
-    }  
-        return (
-            <div>
-                {isQuizStarted === false && <Quizical
-                    isQuizStarted= {isQuizStarted}
-                    handleClick = {startQuiz}
-                />}
-                {isQuizStarted && <QuizicalQuestions/>}
-            </div>
+    return (
+           quizStarted? <Quiz /> : <Landing handleClick = {startQuiz}/>
             )
-        }
+     }
+
+
+// **********IGNORE THE BELLOE CODES **************
+// Reminder for myself.---
+
+    //  Note : when you need to use the value of true and false it is better to use ternary above way, here you do not need to declare it that if for false you need to render this.
+
+//      <div>
+//      {!quizStarted && <Landing handleClick = {startQuiz}/>}
+//      {quizStarted && <Question/>}
+//   </div>
        
