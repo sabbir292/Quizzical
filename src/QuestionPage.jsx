@@ -1,38 +1,55 @@
 import './index.css'
-export default function QuestionPage(props){
+export default function QuestionPage(props) {
 
-    const answerEls = props.answers.map(answer=>{
-      function checkAns(){
-        if(props.isChecked && answer.selected && answer.isCorrect){
-          return '#94D7A2'
-        }else if(props.isChecked && answer.selected && !answer.isCorrect){
-          return '#F8BCBC'
-        }else if(props.isChecked && !answer.selected && answer.isCorrect){
-          return '#94D7A2'
-        }
-      }
+  return(
+      <div className='ques-container'>
+          {props.isChecked?
+            <div>
+                <h1 className='question'>{props.question}</h1>
 
-      const styles = {backgroundColor :checkAns()}
-      
-        return (
-                <button 
-                    className={`ansBtn ${answer.selected? 'selected': ''}`}
-                    onClick = {()=>props.handleClick(props.id,answer.id)}
-                    key = {answer.id}
-                    style = {styles}
+                <div className='btn-contaienr'>
+
+                  {props.answers.map(answer=>{
+                    let color = {backgroundColor : 'transparent'}
+                      if(props.selected === answer && props.selected === props.correctAnswer){
+                        color = {backgroundColor:'#94D7A2'}
+                      }else if(answer=== props.correctAnswer){
+                        color = {backgroundColor:'#94D7A2'}
+                      }else if(props.selected === answer && props.selected !== props.correctAnswer){
+                        color = {backgroundColor: '#F8BCBC'}
+                      }
+                    return  <button 
+                    style={color}
+                    key = {answer}
+                    className='ansBtn'
                     >
-                    {answer.text}
-                </button>
-        )
-    })
+                    {answer}
+                    </button>
+                  })}
+                </div>
+            </div>  
 
-    return(
-        <section className='question-page'>
-                <h1 className="question">{props.question}</h1>
-                  <div className="ansBtn-container">
-                    {answerEls}
-                  </div>
-                <hr className="line"></hr>
-                </section>
-    )
+          : <div>
+              <h1 className='question'>{props.question}</h1>
+              <div className='btn-contaienr'>
+                  {props.answers.map(answer=>{
+                    let color = {backgroundColor :'transparent'}
+                      if(answer=== props.selected){
+                        color = {backgroundColor:"#94D7A2"}
+                      }
+                    return  <button 
+                    onClick={()=>props.setAnswer(props.id, answer)} 
+                    className= 'ansBtn' 
+                    key={answer}
+                    style={color}
+                    >
+                    {answer}
+                    </button>
+                  })}
+                </div>
+          </div> 
+          }
+      </div>
+  )
+
 }

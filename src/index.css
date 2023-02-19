@@ -31,7 +31,7 @@ body{
     padding: 20px 70px;
 }
 .main-container-landing{
-    height: 600px;
+    min-height: 600px;
     width: 550px;
     display: flex;
     align-items: center;
@@ -88,16 +88,14 @@ body{
     line-height: 12px;
     text-align: center;
     color: #293264;
-    border: none;
+    border: 0.794239px solid #4D5B9E;
     outline: none;
     cursor: pointer;
     padding: 4px 19px;
     margin: 15px;
     margin-left: 0;
 }
-.ansBtn.selected{
-    background-color: aquamarine;
-}
+
 .line{
     width: 460px;
     height: 0px;
@@ -114,4 +112,12 @@ body{
     line-height: 12px;
     text-align: center;
     color: #F5F7FB;
+    background: #4D5B9E;
+    
+}
+.endBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
