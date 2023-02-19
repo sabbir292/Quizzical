@@ -72,7 +72,9 @@ function newQuiz(){
     setIsChecked(false)
     setScore(0)
 }
-
+function home(){
+    window.location.reload(false)
+}
 return(
     <main className='main-container-landing'>
         {allQuestions.length>0 ? <div>
@@ -98,6 +100,8 @@ return(
                     <button className='ansBtn check-ans' 
                     onClick={newQuiz}
                     >Play Again</button>
+                     <div onClick={home} className="home"><i class="uil uil-estate"></i>
+                     </div>
                 </div>
                 :
                 <div className='endBtn'>
@@ -106,6 +110,7 @@ return(
                         onClick={checkAns}
                         >Check Answer
                     </button>
+                    <div onClick={home} className="home"><i class="uil uil-estate"></i></div>
                 </div>    
             }
 
