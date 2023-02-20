@@ -206,5 +206,8 @@ input{
     .line{
         width: 70vw;
     }
+    .endBtn{
+       width: 70vw;
+    }
 
   }
