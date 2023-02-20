@@ -176,6 +176,9 @@ return(
                     className='start-quiz'
                     onClick={startQuiz}
                 >Start quiz</button>
+                <footer className="footer">
+                    Copyright @sabbirHossain{new Date().getFullYear()}. made with Open Trivia Api
+                </footer>
             </section>
         
 

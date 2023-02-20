@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+    margin: 3rem;
 }
 
 body{
@@ -170,5 +170,44 @@ body{
     outline: none;
 }
 input{
-    outline: none;
+    background-color: transparent;
+    border: 0px solid;
 }
+
+.footer{
+    position: absolute;
+    bottom: 2rem;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    #root{
+        margin: 2rem 0;
+        width: 100vw;
+    }
+    .main-container-landing div{
+        width: 100%;
+        text-align: center;
+        margin-top: ;
+    }
+    .ques-container{
+        height: auto;
+    }
+    .ques-container div{
+        width: 100%;
+    }
+    .question{
+        width: 100%;
+        height: auto;
+    }
+
+    .home{
+        position: absolute;
+        top: 20px;
+        left: -177px;
+        font-size: 2rem;
+    }
+
+  }
