@@ -10,11 +10,11 @@ export default function QuestionPage(props) {
                 <div className='btn-contaienr'>
 
                   {props.answers.map(answer=>{
-                    let color = {backgroundColor : 'transparent'}
+                    let color = {backgroundColor : 'transparent',opacity: '100%'}
                       if(props.selected === answer && props.selected === props.correctAnswer){
                         color = {backgroundColor:'#94D7A2'}
                       }else if(answer=== props.correctAnswer){
-                        color = {backgroundColor:'#94D7A2'}
+                        color = {backgroundColor:'#94D7A2', opacity: '60%'}
                       }else if(props.selected === answer && props.selected !== props.correctAnswer){
                         color = {backgroundColor: '#F8BCBC'}
                       }
@@ -27,6 +27,7 @@ export default function QuestionPage(props) {
                     </button>
                   })}
                 </div>
+                <hr className='line'></hr>
             </div>  
 
           : <div>
@@ -47,6 +48,7 @@ export default function QuestionPage(props) {
                     </button>
                   })}
                 </div>
+                <hr className='line'></hr>
           </div> 
           }
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import {nanoid} from "nanoid"
 import QuestionPage from "./QuestionPage";
+import Select from "./Select";
 
 
 export default function App() {
@@ -8,14 +9,20 @@ export default function App() {
     const [allQuestions, setAllQuestions] = React.useState([])
     const [isChecked,setIsChecked] = React.useState(false)
     const [score, setScore] = React.useState(0)
+    const [categories, setCategories] = React.useState({
+        number:'5',
+        category : '&category=9',
+        difficulty: '',
+        type: ''
+    })
 
     function startQuiz() {
         const Arr = []    
 
-                fetch("https://opentdb.com/api.php?amount=5")
+                fetch(`https://opentdb.com/api.php?amount=${categories.number}${categories.category}${categories.difficulty}${categories.type}`)
                     .then(res=> res.json())
-                    .then(data=>{ console.log(data.results)
-
+                    .then(data=>{ 
+                        // const results = data.results
                  data.results.map(question=>{
                     const answers = [...question.incorrect_answers,question.correct_answer]
                     // console.log(answers)
@@ -28,11 +35,16 @@ export default function App() {
                         correctAnswer: question.correct_answer,
                         incorrectAnswers : question.incorrect_answers,
                         selected : '',
-                        btnColor : {backgroundColor: 'transparent'}
+                        btnColor : {backgroundColor: 'transparent'},
+                        category : question.category,
+                        type : question.type,
+                        difficulty: question.difficulty
+                        
                         // isChecked:{isChecked}
                     })
                 })
                 setAllQuestions(Arr)
+                // console.log(results)
             })
     }
 
@@ -62,8 +74,9 @@ function setAnswer(id, answer){
 function checkAns(){
     allQuestions.map(question=>{
         if(question.selected === question.correctAnswer){
-          let score =  setScore(prev=> prev+1)
-        }return score
+            let score =  setScore(prev=> prev+1)
+            return score
+        }
     })
     setIsChecked(true)
 }
@@ -75,6 +88,37 @@ function newQuiz(){
 function home(){
     window.location.reload(false)
 }
+
+function setNumber(event){
+    
+    setCategories(prev => ({
+        ...prev, 
+        number: event.target.value
+    }))
+}
+function setCategory(event){
+    
+    setCategories(prev => ({
+        ...prev, 
+        category: event.target.value
+    }))
+}
+function setDifficulty(event){
+    
+    setCategories(prev => ({
+        ...prev, 
+        difficulty: event.target.value
+    }))
+}
+function setType(event){
+    
+    setCategories(prev => ({
+        ...prev, 
+        type: event.target.value
+    }))
+}
+console.log(categories)
+console.log(allQuestions)
 return(
     <main className='main-container-landing'>
         {allQuestions.length>0 ? <div>
@@ -100,7 +144,7 @@ return(
                     <button className='ansBtn check-ans' 
                     onClick={newQuiz}
                     >Play Again</button>
-                     <div onClick={home} className="home"><i class="uil uil-estate"></i>
+                     <div onClick={home} className="home"><i className="uil uil-estate"></i>
                      </div>
                 </div>
                 :
@@ -110,7 +154,7 @@ return(
                         onClick={checkAns}
                         >Check Answer
                     </button>
-                    <div onClick={home} className="home"><i class="uil uil-estate"></i></div>
+                    <div onClick={home} className="home"><i className="uil uil-estate"></i></div>
                 </div>    
             }
 
@@ -120,8 +164,14 @@ return(
   
         
             <section className='landing-page'>
-                <h1 className='title'>Quizzical</h1>
-                <p className='description'>Some description if needed</p>
+                <h1 className='title'>QuizMania</h1>
+                <p className='description'>Discover new facts and have fun with QuizMania's quizzes.</p>
+                <Select 
+                    setCategory={setCategory}
+                    setDifficulty= {setDifficulty}
+                    setType = {setType}
+                    setNumber = {setNumber}
+                />
                 <button
                     className='start-quiz'
                     onClick={startQuiz}
