@@ -187,27 +187,24 @@ input{
         margin: 2rem 0;
         width: 100vw;
     }
-    .main-container-landing div{
-        width: 100%;
-        text-align: center;
-        margin-top: ;
+    .main-container-landing{
+        padding: 5px 5px;
     }
     .ques-container{
-        height: auto;
-    }
-    .ques-container div{
-        width: 100%;
+        width: 70vw;
+        padding-top: 1.3rem;
     }
     .question{
-        width: 100%;
-        height: auto;
+        font-size: 20px;
     }
-
     .home{
         position: absolute;
-        top: 20px;
-        left: -177px;
+        top: 5px;
+        left: 5px;
         font-size: 2rem;
+    }
+    .line{
+        width: 70vw;
     }
 
   }
